@@ -60,7 +60,7 @@ public class SpringMvcJpaCrudDemoApplication implements CommandLineRunner{
 
 		Empleado emp1 = Empleado.builder()
 			.nombre("Aurora")
-			.primerApellido("Duque")
+			.primerApellido("Luque")
 			.fechaAlta(LocalDate.of(2018, Month.FEBRUARY, 9))
 			.departamento(departamentoService.dameUnDepartamento(1))
 			.salario(2399)
@@ -77,46 +77,62 @@ public class SpringMvcJpaCrudDemoApplication implements CommandLineRunner{
 			.build();
 
 
-			Empleado emp3 = Empleado.builder()
+		Empleado emp3 = Empleado.builder()
 			.nombre("Adriana")
 			.primerApellido("Ardinque")
 			.fechaAlta(LocalDate.of(2012, Month.APRIL, 15))
-			.departamento(departamentoService.dameUnDepartamento(1))
+			.departamento(departamentoService.dameUnDepartamento(2))
 			.salario(3290)
 			.genero(Genero.MUJER)
 			.build();
+
+
+		empleadoService.persistirEmpleado(emp1);
+		empleadoService.persistirEmpleado(emp2);
+		empleadoService.persistirEmpleado(emp3);
 		// Telefonos del empleado
 
-		List<Telefono> telefonosEmpleado1 = new ArrayList<>();
+		//List<Telefono> telefonosEmpleado1 = new ArrayList<>();
 
 		Telefono telefono1Empleado1 = Telefono.builder()
 			.numero("961105618")
+			.empleado(empleadoService.dameUnEmpleado(1))
 			.build();
 
 		Telefono telefono2Empleado1 = Telefono.builder()
 			.numero("663141120")
+			.empleado(empleadoService.dameUnEmpleado(1))
 			.build();	
 
 			
 
-		telefonosEmpleado1.add(telefono1Empleado1);
-		telefonosEmpleado1.add(telefono2Empleado1);
-		List<Telefono> telefonosEmpleado2 = new ArrayList<>();
+		//telefonosEmpleado1.add(telefono1Empleado1);
+		//telefonosEmpleado1.add(telefono2Empleado1);
+		
+		telefonoService.persistirTelefono(1, telefono1Empleado1);
+		telefonoService.persistirTelefono(1, telefono2Empleado1);
+
+		//List<Telefono> telefonosEmpleado2 = new ArrayList<>();
 
 		Telefono telefono1Empleado2 = Telefono.builder()
 			.numero("961105618")
+			.empleado(empleadoService.dameUnEmpleado(2))
 			.build();
 
 		Telefono telefono2Empleado2 = Telefono.builder()
 			.numero("664253418")
+			.empleado(empleadoService.dameUnEmpleado(2))
 			.build();
 
-		telefonosEmpleado2.add(telefono1Empleado2);
-		telefonosEmpleado2.add(telefono2Empleado2);
+		telefonoService.persistirTelefono(2, telefono1Empleado2);
+		telefonoService.persistirTelefono(2, telefono2Empleado2);
+
+		//telefonosEmpleado2.add(telefono1Empleado2);
+		//telefonosEmpleado2.add(telefono2Empleado2);
 
 		//Correos
 
-		List<Correo> correosEmpleado1 = new ArrayList<>();
+		//List<Correo> correosEmpleado1 = new ArrayList<>();
 
 		Correo correo1Empleado1 = Correo.builder()
 				.correo("daniela@gmail.com")
@@ -125,22 +141,28 @@ public class SpringMvcJpaCrudDemoApplication implements CommandLineRunner{
 		Correo correo2Empleado1 =Correo.builder()
 				.correo("alicia@hotmail.com")
 				.build();
-				
-		correosEmpleado1.add(correo1Empleado1);
-		correosEmpleado1.add(correo2Empleado1);
+		correoService.persistirCorreo(1, correo1Empleado1);
+		correoService.persistirCorreo(1, correo2Empleado1);
 
-		
+		//correosEmpleado1.add(correo1Empleado1);
+		//correosEmpleado1.add(correo2Empleado1);
+
+		//List<Correo> correosEmpleado2 = new ArrayList<>();
 		Correo correo1Empleado2 = Correo.builder()
 				.correo("elsa@gmail.com")
 				.build();
-		List<Correo> correosEmpleado2 = new ArrayList<>();
+		
 
 		Correo correo2Empleado2 =Correo.builder()
 				.correo("woderland@hotmail.com")
 				.build();
 				
-		correosEmpleado2.add(correo1Empleado2);
-		correosEmpleado2.add(correo2Empleado2);
+		//correosEmpleado2.add(correo1Empleado2);
+		//correosEmpleado2.add(correo2Empleado2);
+
+		correoService.persistirCorreo(2, correo1Empleado2);
+		correoService.persistirCorreo(2, correo2Empleado2);
+
 		
 		
 		
